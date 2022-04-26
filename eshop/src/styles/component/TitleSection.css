@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'TitlePolice';
+    src: url('Inter-Light.ttf');
+}
+
+
+.title__section{
+    font-family: 'TitlePolice';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    letter-spacing: 0.13em;
+
+    color: rgba(241, 184, 37, 1);
+}

@@ -1,0 +1,17 @@
+/* layout */
+
+@import './layout/header.css';
+
+@import './layout/footer.css';
+
+/*Components*/
+
+@import './component/TitleSection.css';
+
+@import './component/Button.css';
+
+/*pages*/
+
+@import './page/home.css';
+
+

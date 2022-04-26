@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'MaSuperPolice';
+    src: url('Poppins-Regular.ttf');
+}
+
+.header__main{
+    padding: 1%;
+    background-color: black;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "MaSuperPolice";
+}
+
+.header__nav{
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+
+.nav__list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav__item{
+    margin-left: 20px;
+}
+
+.nav__link{
+    font-weight: normal;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    
+}
+.nav__link:hover {
+    color: rgba(241, 184, 37, 1);
+}

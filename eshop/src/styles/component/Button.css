@@ -1,0 +1,16 @@
+.btn__black{
+    border: 1px solid black;
+    padding: 15px 20px;
+    background-color: none;
+    background: black;
+    text-transform: uppercase;
+    transition: 0.3s all;
+    color: white;
+}
+
+.btn__black:hover{
+    background: white;
+    border: 1px solid black;
+    color: black;
+    transition: 0.3s all;
+}

@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'MaSuperPolice';
+    src: url('Poppins-Regular.ttf');
+}
+
+ .msg__home{
+    font-family: 'MaSuperPolice';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 29px;
+    letter-spacing: 0.175em;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.home{
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img__home{
+    max-width: 450px;
+    height: auto;
+    top: 10.01%;
+    bottom: 9.16%;
+    position: relative;
+    padding: 20px;
+}
+
+.text__home{
+    margin-right: 35px;
+}
+
+.img__box__home{
+    background: #F1B825;
+    max-width: 450px;
+    height: auto;
+    top: 10.01%;
+    bottom: 9.16%;
+    margin-left: 2%;
+}
+
+
+@media only screen and (max-width: 960px){
+    .text__home{
+     margin: 25px;
+    }
+    .shop{
+        margin: 25px;
+        display: block;
+    }
+    .img__home{
+        margin: 2%;
+        width: 300px;
+        height: auto;
+    }
+    .img__box__home{
+        background:none;
+        max-width: 0;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        margin-left: 0;
+    }
+}
