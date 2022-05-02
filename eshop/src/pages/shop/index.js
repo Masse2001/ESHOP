@@ -1,17 +1,51 @@
 import TitleSection from "../../components/TitleSection";
 import Link from "next/link";
 import shopbag from "../../public/icons/shopbag.png"
-import r4 from "../../public/images/r_4.jpg"
-import r5 from "../../public/images/r_5.jpg"
-import r6 from "../../public/images/r6.jpg"
-import r7 from "../../public/images/r_7.jpg"
-import basket from "../../public/icons/panier.png"
+import Article from "../../components/Article";
+import axios from 'axios';
+import { useState,useEffect } from 'react';
 
 //Faire le mapping des catégories de menus
 //Faire le mapping des  articles
+const Index = () => {
 
+    const [categorylist, setCategoryList] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState();
+    const [inputs, setInputs] = useState([]);
+    useEffect(() => {
+        getCategories();
+        getFilteredList()
+ 
+    }, [categorylist,selectedCategory,getFilteredList]);
 
-export default function Home() {
+    function getCategories() {
+        axios.get('http://localhost:80/shop-api/imagecategory.php').then(function(response) {
+            setCategoryList(response.data);
+        });
+    }
+
+    function handleCategoryChange(event) {
+        setSelectedCategory(event.target.value);
+     }
+
+     function getFilteredList() {
+        if (!selectedCategory) {
+            axios.get(`http://localhost:80/shop-api/product_category.php`).then(function(response) {
+                setInputs(response.data);
+            });
+        }
+        else
+        {
+            axios.get(`http://localhost:80/shop-api/product_category.php/${selectedCategory}`).then(function(response) {
+            setInputs(response.data);
+        });
+ 
+        
+        }
+    
+        
+      }
+
   return (
     <div>
         <div className="head__bar">
@@ -26,43 +60,43 @@ export default function Home() {
         <div className="shop__section">
             <div className="shop__menu">
                 <h4>CATEGORIES</h4>
-                <Link href="/">
-                    <p className="cat__item">Dresses</p>
-                </Link>
+                <select
+                    name="category-list"
+                    id="category-list"
+                    onChange={handleCategoryChange}
+                >
+
+                    <option value="">All</option>
+                    {categorylist && categorylist.map((category, key) =>(
+                        
+                        <option value={`${category.categoryid}`}>{category.categoryname}</option>
+                    
+                    ))}  
+
+                </select>
+                
             </div>
             <div className="shop__article">
                 <div className="container">
-                    <div className="art">
-                        <img src={r4.src} alt="h_shop" className="art__img"/>
-                        <div className="art__body">
-                            <p className="art__title">Robe été courte à manches courtes bouffantes</p>
-                            <p className="art__price">35€ </p>
-                        </div>
-                    </div>
-                    <div className="art">
-                        <img src={r5.src} alt="h_shop" className="art__img"/>
-                        <div className="art__body">
-                            <p className="art__title">Robe moulante courte à manches bouffantes</p>
-                            <p className="art__price">35€ </p>
-                        </div>
-                    </div>
-                    <div className="art">
-                        <img src={r6.src} alt="h_shop" className="art__img"/>
-                        <div className="art__body">
-                            <p className="art__title">Robe été courte à manches bouffantes en satin</p>
-                            <p className="art__price">35€ </p>
-                        </div>
-                    </div>
-                    <div className="art">
-                        <img src={r7.src} alt="h_shop" className="art__img"/>
-                        <div className="art__body">
-                            <p className="art__title">Robe moulante courte à manches bouffantes en satin</p>
-                            <p className="art__price">35€ </p>
-                        </div>
-                    </div>
+                  {inputs &&
+                    inputs.map((article) => (
+                    
+                      <Article  article={article}  key={article.id} />
+                    
+                    ))}
                 </div>
             </div>
         </div>
     </div>
   )
 }
+ 
+export default Index;
+
+/*
+<Link href="/">
+                    <p className="cat__item">Dresses</p>
+                </Link>
+
+
+*/ 

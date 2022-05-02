@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Article = (props) => {
+const Article = ({article}) => {
     return (
-        <div className='article'>
-            <div className='article__img'>
-                <img src={props.art.img} alt="art__img" className="art__img"/>
+        <div className='art'>
+            <div className='art__img'>
+                <img src={article.url_produit} alt={`${article.productname}`} className="art__img"/>
             </div>
-            <div className='article__body'>
-                <p className='article__title'>{props.art.title}</p>
-                <p className='article__title'>{props.art.price}</p>
+            <div className='art__body'>
+                <p className='art__title'>{article.productname}</p>
+                <p className='art__price'>{article.prixU} €</p>
             </div>
         </div>
     );
