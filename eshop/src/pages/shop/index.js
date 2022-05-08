@@ -1,5 +1,3 @@
-import TitleSection from "../../components/TitleSection";
-import Link from "next/link";
 import shopbag from "../../public/icons/shopbag.png"
 import Article from "../../components/Article";
 import axios from 'axios';
@@ -14,13 +12,15 @@ const Index = () => {
     const [inputs, setInputs] = useState([]);
     useEffect(() => {
         getCategories();
-        getFilteredList()
+        getFilteredList();
  
-    }, [categorylist,selectedCategory,getFilteredList]);
+    }, [selectedCategory]);
 
     function getCategories() {
-        axios.get('http://localhost:80/shop-api/imagecategory.php').then(function(response) {
-            setCategoryList(response.data);
+        axios.get('http://localhost:80/shop-api/category.php').then(function(response) {
+           console.log(response.data);
+           setCategoryList(response.data);
+            
         });
     }
 
@@ -30,14 +30,16 @@ const Index = () => {
 
      function getFilteredList() {
         if (!selectedCategory) {
-            axios.get(`http://localhost:80/shop-api/product_category.php`).then(function(response) {
+            axios.get(`http://localhost:80/shop-api/product.php`).then(function(response) {
                 setInputs(response.data);
+                console.log("hello",response.data);
             });
         }
         else
         {
-            axios.get(`http://localhost:80/shop-api/product_category.php/${selectedCategory}`).then(function(response) {
+            axios.get(`http://localhost:80/shop-api/product.php/${selectedCategory}`).then(function(response) {
             setInputs(response.data);
+            console.log("hello",response.data);
         });
  
         
@@ -68,11 +70,11 @@ const Index = () => {
                 >
 
                     <option value="">All</option>
-                    {categorylist && categorylist.map((category, key) =>(
-                        
-                        <option value={`${category.categoryid}`}>{category.categoryname}</option>
+                    {categorylist.map((category, key) =>
                     
-                    ))}  
+                        <option key={key} value={`${category.categoryid}`}>{category.categoryname}</option>
+                      
+                    )}  
 
                 </select>
                 
@@ -80,11 +82,11 @@ const Index = () => {
             <div className="shop__article">
                 <div className="container">
                   {inputs &&
-                    inputs.map((article) => (
+                    inputs.map((article) => 
                     
                       <Article  article={article}  key={article.id} />
                     
-                    ))}
+                    )}
                 </div>
             </div>
         </div>
