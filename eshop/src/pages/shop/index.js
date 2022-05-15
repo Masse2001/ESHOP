@@ -30,14 +30,14 @@ const Index = () => {
 
      function getFilteredList() {
         if (!selectedCategory) {
-            axios.get(`http://localhost:80/shop-api/product.php`).then(function(response) {
+            axios.get(`http://localhost:80/shop-api/product_category.php`).then(function(response) {
                 setInputs(response.data);
                 console.log("hello",response.data);
             });
         }
         else
         {
-            axios.get(`http://localhost:80/shop-api/product.php/${selectedCategory}`).then(function(response) {
+            axios.get(`http://localhost:80/shop-api/product_category.php/${selectedCategory}`).then(function(response) {
             setInputs(response.data);
             console.log("hello",response.data);
         });
@@ -47,6 +47,8 @@ const Index = () => {
     
         
       }
+
+     
       //hemlo
 
   return (

@@ -26,10 +26,26 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav__item">
-            <Link href="/">
-              <a className="nav__link">Login</a>
+            <Link href="/login_fournisseur">
+              <a className="nav__link">Login-F</a>
             </Link>
           </li>
+          <li className="nav__item">
+            <Link href="/register_fournisseur">
+              <a className="nav__link">Register-F</a>
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link href="/login_client">
+              <a className="nav__link">Login-C</a>
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link href="/register_client">
+              <a className="nav__link">Register-C</a>
+            </Link>
+          </li>
+          
         </ul>
       </nav>
     </header>
