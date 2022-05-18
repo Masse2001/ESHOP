@@ -21,6 +21,7 @@ const Index = () => {
                 console.log(response.data);
                 setInputs(response.data[0]);
               
+             
                 //idcategory =  response.data[0].categoryid;
                  getCategoryName(response.data[0].categoryid)
                
@@ -104,12 +105,14 @@ const Index = () => {
                             <p className='art__price'>{inputs && inputs.prixU} €</p>
                         </div>
                       
-                        <Button
+                        {localStorage.getItem('jwt_client') ? <Button
                             type="button"
                             classes="btn btn__color-black"
                             function={() => addTocart(inputs)}
                             title="ajouter au panier"
-                            />
+                            /> :
+                            <p style={{color : "red"}}>Pour voir l'option ajouter au panier : connectez vous !</p>
+                          }    
                     </div>
                 </div>
             </div>
