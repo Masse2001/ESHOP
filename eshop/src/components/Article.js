@@ -4,7 +4,7 @@ import React from 'react';
 const Article = ({article}) => {
 
     function CategName(categ){
-        localStorage.setItem("namecateg", categ)
+        localStorage.setItem("id", categ)
       }
 
     return (

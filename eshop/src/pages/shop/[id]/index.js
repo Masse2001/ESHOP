@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { useRouter } from "next/router";
 import Article from "../../../components/Article";
+import Button from "../../../components/Button";
 
 
 //Faire le mapping des catégories de menus
@@ -13,15 +14,19 @@ const Index = () => {
     const [categoryname, setCategoryName] = useState([]);
   
     const router = useRouter();
+    const code = router.query.id;
+      
     useEffect(() => {
-        const code = router.query.id;
         axios.get(`http://localhost:80/shop-api/product.php/${code}`).then(function(response) {
-            console.log(response.data[0]);
-            setInputs(response.data[0]);
-            //idcategory =  response.data[0].categoryid;
-            getCategoryName(response.data[0].categoryid)
-           
-        });
+                console.log(response.data);
+                setInputs(response.data[0]);
+              
+                //idcategory =  response.data[0].categoryid;
+                 getCategoryName(response.data[0].categoryid)
+               
+            });
+
+      
 
       
     }, []);
@@ -33,6 +38,44 @@ const Index = () => {
         });
     }
 
+    const addTocart = (element) => {
+        //On créé un nouvel object avec une nouvelle propriété quantity
+        let productToInsert = {
+          code: element.code,
+          productname: element.productname,
+          url_produit: element.url_produit,
+          prixU: element.prixU,
+          quantity: 1
+        };
+
+        const cartArray = [];
+
+    //Si j'ai déjà un ou des produits dans mon localstorage
+    if (localStorage.getItem("cart")) {
+
+      const localStorageCart = JSON.parse(localStorage.getItem("cart"));
+      localStorageCart.forEach((inputs) => {
+        cartArray.push(inputs);
+      });
+
+      const indexOfExistingProduct = cartArray.findIndex((el) => el.code === element.code);
+
+      if (indexOfExistingProduct !== -1) {
+        cartArray[indexOfExistingProduct].quantity += 1;
+      }
+      else {
+        cartArray.push(productToInsert);
+      }
+      localStorage.setItem("cart", JSON.stringify(cartArray));
+    }
+    //Si localstorage vide
+    else {
+      cartArray.push(productToInsert);
+      localStorage.setItem("cart", JSON.stringify(cartArray));
+    }
+
+
+    };
     
   return (
     <div>
@@ -61,6 +104,12 @@ const Index = () => {
                             <p className='art__price'>{inputs && inputs.prixU} €</p>
                         </div>
                       
+                        <Button
+                            type="button"
+                            classes="btn btn__color-black"
+                            function={() => addTocart(inputs)}
+                            title="ajouter au panier"
+                            />
                     </div>
                 </div>
             </div>
