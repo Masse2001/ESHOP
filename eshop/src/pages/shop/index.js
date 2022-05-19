@@ -10,12 +10,19 @@ const Index = () => {
     const [categorylist, setCategoryList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
     const [inputs, setInputs] = useState([]);
+    const [inputsearch, setInputsSearch] = useState([]);
+    const [search, setSearch] = useState("");
+ 
     useEffect(() => {
         getCategories();
         getFilteredList();
- 
-    }, [selectedCategory]);
+        
+    }, [selectedCategory, search]);
 
+    const submitSearch = (e) =>{
+        e.preventDefault()
+      }
+    
     function getCategories() {
         axios.get('http://localhost:80/shop-api/category.php').then(function(response) {
            console.log(response.data);
@@ -24,16 +31,24 @@ const Index = () => {
         });
     }
 
+    function searchProduct(){
+        axios.get(`http://localhost:80/shop-api/productbyname.php/${search}`).then(function(response) {
+            setInputs(response.data);
+            console.log("hello",response.data);
+        });
+     }
     function handleCategoryChange(event) {
         setSelectedCategory(event.target.value);
      }
 
      function getFilteredList() {
         if (!selectedCategory) {
-            axios.get(`http://localhost:80/shop-api/product_category.php`).then(function(response) {
+          /*  axios.get(`http://localhost:80/shop-api/product_category.php`).then(function(response) {
                 setInputs(response.data);
                 console.log("hello",response.data);
-            });
+            });*/
+
+           searchProduct() 
         }
         else
         {
@@ -58,8 +73,11 @@ const Index = () => {
             <img src={shopbag.src} alt="h_shop" className="shopbag"/>
         </div>
         <div className="search__box">
-                <form onSubmit={()=>console.log("C'est fait")}>
-                    <input type="text" name="name" id="name" required placeholder="Search" className="search__input"/>
+                <form onSubmit={(e)=> submitSearch(e)}>
+                    <input type="text" name="name" id="name" 
+                         required placeholder="Search by name product"
+                         onChange={(e)=> setSearch(e.target.value)}
+                         className="search__input"/>
                 </form>
         </div>
         <div className="shop__section">
