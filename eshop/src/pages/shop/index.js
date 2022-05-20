@@ -72,7 +72,9 @@ const Index = () => {
     <div>
         <div className="head__bar">
             <h3 className="title__bar">In Style</h3>
-            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            <Link href="/cart">
+                <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            </Link>
         </div>
         <div className="search__box">
                 <form onSubmit={(e)=> submitSearch(e)}>

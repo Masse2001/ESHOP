@@ -79,7 +79,9 @@ const Index = () => {
     <div>
         <div className="head__bar">
             <h3 className="title__bar">{inputs && inputs.productname}</h3>
-            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            <Link href="/cart">
+                <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            </Link>
         </div>
         <div className='home'>
             <div className="text_home">
