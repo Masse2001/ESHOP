@@ -14,15 +14,15 @@ const Article = ({article}) => {
             </div>
             <div className='art__body'>
                 <p className='art__title'>{article.productname}</p>
+                <p className='art__price'>{article.prixU} €</p>
             </div>
-            <div className='art__footer'>
-                 <p className='art__price'>{article.prixU} €</p>
-                <Link href={`/shop/${article.code}`} >
-                   <button type='button' className='btn__black'>
-                       More
-                   </button>
+            <p>
+                  <Link href={`/shop/${article.code}`} >
+                    <a>
+                        Voir le produit
+                    </a>
                   </Link>
-            </div>
+            </p>    
         </div>
     );
 }

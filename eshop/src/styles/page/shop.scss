@@ -56,26 +56,17 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
 .art{
     background-color: bisque;
     margin-bottom: 20px;
     padding: 20px;
-    max-width: 340px;
+    width: 340px;
 }
 .art__img{
-    max-width: 300px;
+    width: 300px;
     height: auto;
 }
 
 .art__title{
     margin-top: 10px;
-}
-
-
-
-.art__footer{
-    display: flex;
-    justify-content: space-between;
 }

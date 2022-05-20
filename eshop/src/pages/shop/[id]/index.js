@@ -4,7 +4,6 @@ import { useState,useEffect } from 'react';
 import { useRouter } from "next/router";
 import Article from "../../../components/Article";
 import Button from "../../../components/Button";
-import { Link } from "react";
 
 
 //Faire le mapping des catégories de menus
@@ -18,7 +17,7 @@ const Index = () => {
     const code = router.query.id;
       
     useEffect(() => {
-        axios.get(`http://localhost:80/shop-api/product.php/${code}`).then(function(response) {
+               axios.get(`http://localhost:80/shop-api/product.php/${code}`).then(function(response) {
                 console.log(response.data);
                 setInputs(response.data[0]);
               
@@ -27,6 +26,10 @@ const Index = () => {
                  getCategoryName(response.data[0].categoryid)
                
             });
+
+      
+
+      
     }, []);
 
     function getCategoryName(id) {
@@ -78,27 +81,41 @@ const Index = () => {
   return (
     <div>
         <div className="head__bar">
-            <h3 className="title__bar">{inputs && inputs.productname}</h3>
-            <Link href="/cart">
-                <img src={shopbag.src} alt="h_shop" className="shopbag"/>
-            </Link>
+            <h3 className="title__bar">In Style</h3>
+            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
         </div>
-        <div className='home'>
-            <div className="text_home">
-                <TitleSection title={inputs && inputs.productname} classname="title__home"/>
-                <p className='msg__home'>{inputs && inputs.productname}</p>
-                {localStorage.getItem('jwt_client') ? 
-                 <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>ADD TO CART</button>
-                 :
-                 <Link href="/login_client">
-                  <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>S'IDENTIFIER</button>
-                 </Link>
-                }
-            </div>
-            <div className="img__box__home">
-                <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
-            </div>
+        <div className="search__box">
+                <form onSubmit={()=>console.log("C'est fait")}>
+                    <input type="text" name="name" id="name" required placeholder="Search" className="search__input"/>
+                </form>
+                    <h1>Product-Details</h1>
+                    <h2> Catégorie : <span style={{textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
+            
         </div>
+       
+       <div className="shop__section">
+            <div className="shop__article">
+                <div className="container" style={{textAlign:"center",margin: "0 auto",width:"100px"}}>
+                  <div className='art'>
+                        <div className='art__img'>
+                            <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="art__img"/>
+                        </div>
+                        <div className='art__body'>
+                            <p className='art__title'>{inputs && inputs.productname}</p>
+                            <p className='art__price'>{inputs && inputs.prixU} €</p>
+                        </div>
+                      
+                      <Button
+                            type="button"
+                            classes="btn btn__color-black"
+                            function={() => addTocart(inputs)}
+                            title="ajouter au panier"
+                            /> 
+                    </div>
+                </div>
+            </div>
+
+        </div> 
 
     </div>
   )

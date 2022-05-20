@@ -2,8 +2,6 @@ import shopbag from "../../public/icons/shopbag.png"
 import Article from "../../components/Article";
 import axios from 'axios';
 import { useState,useEffect } from 'react';
-import r_5 from '../../public/images/r_5.jpg';
-import Link from "next/link";
 
 //Faire le mapping des catégories de menus
 //Faire le mapping des  articles
@@ -72,9 +70,7 @@ const Index = () => {
     <div>
         <div className="head__bar">
             <h3 className="title__bar">In Style</h3>
-            <Link href="/cart">
-                <img src={shopbag.src} alt="h_shop" className="shopbag"/>
-            </Link>
+            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
         </div>
         <div className="search__box">
                 <form onSubmit={(e)=> submitSearch(e)}>
@@ -100,7 +96,7 @@ const Index = () => {
                       
                     )}  
 
-                </select> 
+                </select>
                 
             </div>
             <div className="shop__article">
@@ -111,22 +107,6 @@ const Index = () => {
                       <Article  article={article}  key={article.id} />
                     
                     )}
-                    <div className='art'>
-                        <div className='art__img'>
-                            <img src={r_5.src} alt="img" className="art__img"/>
-                        </div>
-                        <div className='art__body'>
-                            <p className='art__title'>robe__moulante</p>
-                        </div>
-                        <div className='art__footer'>
-                            <p className='art__price'>30 €</p>
-                            <Link href="/shop" >
-                            <button type='button' className='btn__black'>
-                                More
-                            </button>
-                            </Link>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
