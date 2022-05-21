@@ -12,7 +12,8 @@ const Index = () => {
 
     const [inputs, setInputs] = useState();
     const [categoryname, setCategoryName] = useState([]);
-  
+    const[add, setAdd]= useState(false);
+    const [cart, setCart] = useState();
     const router = useRouter();
     const code = router.query.id;
       
@@ -20,17 +21,18 @@ const Index = () => {
                axios.get(`http://localhost:80/shop-api/product.php/${code}`).then(function(response) {
                 console.log(response.data);
                 setInputs(response.data[0]);
-              
-             
+               
                 //idcategory =  response.data[0].categoryid;
-                 getCategoryName(response.data[0].categoryid)
+                 getCategoryName(response.data[0].categoryid);
+
+                VerifAdd(response.data[0].productname);
                
             });
 
       
 
       
-    }, []);
+    }, [add]);
 
     function getCategoryName(id) {
         axios.get(`http://localhost:80/shop-api/category.php/${id}`).then(function(response) {
@@ -41,12 +43,14 @@ const Index = () => {
 
     const addTocart = (element) => {
         //On créé un nouvel object avec une nouvelle propriété quantity
+        setAdd(true);
         let productToInsert = {
           code: element.code,
           productname: element.productname,
           url_produit: element.url_produit,
           prixU: element.prixU,
-          quantity: 1
+          quantity: 1,
+          quantstock: element.QuantiteStock
         };
 
         const cartArray = [];
@@ -68,6 +72,7 @@ const Index = () => {
         cartArray.push(productToInsert);
       }
       localStorage.setItem("cart", JSON.stringify(cartArray));
+      
     }
     //Si localstorage vide
     else {
@@ -77,6 +82,33 @@ const Index = () => {
 
 
     };
+
+    function VerifAdd(productname)
+    {
+      if(JSON.parse(localStorage.getItem("cart")))
+      {
+        const i=0
+         for(i=0;i<JSON.parse(localStorage.getItem("cart")).length;i++)
+         {
+           if(JSON.parse(localStorage.getItem("cart"))[i].productname == productname)
+           {
+            
+               setAdd(true);
+
+           }
+           
+         }
+        
+      }
+      else
+      {
+       
+        setAdd(false)
+      }
+       
+
+
+    }
     
   return (
     <div>
@@ -105,12 +137,18 @@ const Index = () => {
                             <p className='art__price'>{inputs && inputs.prixU} €</p>
                         </div>
                       
-                      <Button
-                            type="button"
-                            classes="btn btn__color-black"
-                            function={() => addTocart(inputs)}
-                            title="ajouter au panier"
-                            /> 
+                     {
+                       add ?
+                        <p style={{color : 'green'}}>Ajouté dans le panier</p>
+                        :
+                        <><Button
+                        type="button"
+                        classes="btn btn__color-black"
+                        function={() => addTocart(inputs)}
+                        title="ajouter au panier"
+                        /> 
+                       </>
+                     }
                     </div>
                 </div>
             </div>

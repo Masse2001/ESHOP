@@ -18,7 +18,7 @@ const Index = () => {
     localStorage.removeItem("cart");
     localStorage.removeItem("commande_client");
     setCart(null);
-    setCommande(null);
+   
   };
 
   useEffect(() => {
@@ -35,8 +35,6 @@ const Index = () => {
              
             })
         .catch(err => console.log((err)))
-
-        
         
     }   
     else
@@ -68,10 +66,23 @@ function commandeProd(){
     panier :  cart
   } 
   localStorage.setItem("commande_client",JSON.stringify(mycommande));
-  const mail = 'gueyebachir98@gmail.com';
-
   axios.post('http://localhost:80/shop-api/commande.php',mycommande)
-        .then(res=>console.log('yoooooooooooooooooo',res))
+        .then(res=>{
+           if(res.data == 'error')
+           {
+            window.confirm("error de l'enregistrement de la commande retenter")
+            window.location.reload();
+
+           }
+           else
+           {
+              window.confirm("Commande enregistré avec succés !")
+              home.push('/profil_client')
+              localStorage.removeItem("cart");
+              localStorage.removeItem("commande_client");
+          
+           }
+        })
         .catch(error => {
           console.log(error)
         });
@@ -92,7 +103,7 @@ const logout = ()=>{
   const decrementQty = (inputs) => {
     const indexOfExistingProduct = cart.findIndex((el) => el.code === inputs.code); 
     if (indexOfExistingProduct !== -1 && cart[indexOfExistingProduct].quantity > 1) {
-        cart[indexOfExistingProduct].quantity -= 1;    
+        cart[indexOfExistingProduct].quantity -= 1;  
         localStorage.setItem("cart", JSON.stringify(cart));
         setCart(JSON.parse(localStorage.getItem('cart')));
     }
@@ -100,7 +111,15 @@ const logout = ()=>{
   const incrementQty = (inputs) => {
     const indexOfExistingProduct = cart.findIndex((el) => el.code === inputs.code);
     if (indexOfExistingProduct !== -1) {
-      cart[indexOfExistingProduct].quantity += 1;
+      if( cart[indexOfExistingProduct].quantity <  cart[indexOfExistingProduct].quantstock)
+        {
+          cart[indexOfExistingProduct].quantity += 1;
+        } 
+      
+      else
+      {
+        cart[indexOfExistingProduct].quantity;
+      }
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     setCart(JSON.parse(localStorage.getItem('cart')));
@@ -145,14 +164,15 @@ const logout = ()=>{
                   <td>{cartItem.prixU}</td>
                   <td>
                     <button onClick={() => decrementQty(cartItem)}>-</button>
-                    {cartItem.quantity}
+                    {cartItem.quantity} 
                     <button onClick={() => incrementQty(cartItem)}>+</button>
-                  </td>
+                    </td>
                   <td>{(cartItem.prixU * cartItem.quantity).toFixed(2)}</td>
                   {/* .Filter() */}
                   <td>
                     <button onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
                   </td>
+                  {cartItem.quantstock == cartItem.quantity? <p style={{color : 'red'}}> Stock épuisé ({cartItem.quantity} /{cartItem.quantstock})</p>:"" }
                 </tr>
               ))}
             </tbody>
