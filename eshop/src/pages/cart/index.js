@@ -156,7 +156,6 @@ const logout = ()=>{
                   <th>Prix Unitaire</th>
                   <th>Quantité</th>
                   <th>Prix total</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
