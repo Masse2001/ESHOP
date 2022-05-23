@@ -1,7 +1,44 @@
 import Input from "../../components/inputs";
 import TitleSection from "../../components/TitleSection";
+import { useState } from "react";
 
 const Index = () => {
+
+    const [nom, setNom] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+    const [submitted, setSubmitted] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('Sending')
+
+        let data = {
+            nom,
+            email,
+            message
+        }
+
+        fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        }).then((res) => {
+            console.log('Response received')
+            if (res.status === 200) {
+                console.log('Response succeeded!')
+                window.confirm("Votre message a été bien envoyé :"+nom);
+                window.location.reload();
+                setSubmitted(true) 
+                setNom('')
+                setEmail('')
+                setMessage('')
+            }
+        })
+    }    
 
     return (
         <div>
@@ -19,7 +56,7 @@ const Index = () => {
                         type="text"
                         id="nom"
                         name="nom"
-                        onChange={e => handleChange(e)}
+                        onChange={(e)=>{setNom(e.target.value)}}
                         required="true"
                         placeholder="Name"
                         className="form__input"      
@@ -29,7 +66,7 @@ const Index = () => {
                         type="email"
                         id="email"
                         name="email"
-                        onChange={e => handleChange(e)}
+                        onChange={(e)=>{setEmail(e.target.value)}}
                         required="true"
                         placeholder="Email"
                         className="form__input"      
@@ -41,7 +78,7 @@ const Index = () => {
                     type="text"
                     id="msg"
                     name="msg"
-                    onChange={e => handleChange(e)}
+                    onChange={(e)=>{setMessage(e.target.value)}}
                     required="true"
                     placeholder="Message"
                     className="form__input message"      
@@ -49,7 +86,7 @@ const Index = () => {
 
                 <label>Subscribe to our newsletter</label>
                 <input type="checkbox" id="news" name="news"></input>
-                <center><button type="register" className="btn__black"> ENVOYER MON MESSAGE</button></center>
+                <center><button type="register" onClick={(e)=>{handleSubmit(e)}} className="btn__black"> ENVOYER MON MESSAGE</button></center>
             </form>
         </div>
         </div>
