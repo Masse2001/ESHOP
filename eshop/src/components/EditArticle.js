@@ -43,6 +43,13 @@ const EditArticle = ({article}) => {
         });
     }
 
+    function truncateText(string, n ) {
+        return string?.length> n? 
+               string.substr(0, n-1) + "..."
+               :
+               "No description";
+    
+      }
     return (
         <div className='art' style={{background: isEditing ? "pink" : "bisque"}}>
             <div className='art__img'>
@@ -64,7 +71,7 @@ const EditArticle = ({article}) => {
                 ): (
                    <>
                         <p className='art__title'>{editedName ? editedName : article.productname}</p>
-                        <p className='art__price'>Description : {editedDescription ? editedDescription : article.description} </p>
+                        <p className='art__price'>Description : {editedDescription ? truncateText(editedDescription, 25) : truncateText(article.description, 25)} </p>
                         <p className='art__price'>Prix : {editedPrice ? editedPrice : article.prixU} €</p>
                         <p className='art__price'>Quantité stockée : {editQuant ? editQuant : article.QuantiteStock} </p>
                             </> 
