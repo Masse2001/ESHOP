@@ -122,9 +122,6 @@ const Index = () => {
         </div>
 
         <div className="search__box">
-                <form onSubmit={()=>console.log("C'est fait")}>
-                    <input type="text" name="name" id="name" required placeholder="Search" className="search__input"/>
-                </form>
                     <h1>Product-Details</h1>
                     <h2> Catégorie : <span style={{textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
             
