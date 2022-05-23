@@ -79,6 +79,22 @@ const index = () => {
             <h3>Email : {user && user.email_client}</h3>
             <h3>Email : {user && user.adresse}</h3>
 
+            <div className="menu__deroulant">
+                <ul className="menu__deroulant__title">
+                        Bonjour {user && user.prenom} {user && user.nom}
+                </ul>
+                    <ul className="sous__menu">
+                            <li className="sous__menu__item">
+                                <p className="sous__menu__link">Prenom : {user && user.prenom}</p>
+                                <p className="sous__menu__link">Nom : {user && user.nom}</p>
+                                <p className="sous__menu__link">Age : {user && user.age}</p>
+                                <p className="sous__menu__link">Email : {user && user.email_client}</p>
+                                <p className="sous__menu__link">Adresse : {user && user.adresse}</p>
+                            </li>
+                                
+                        </ul>
+            </div>
+
             <button className="profil_button" onClick={logout}>Logout</button>
             <br/>
             <br/>
