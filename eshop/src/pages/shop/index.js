@@ -75,11 +75,7 @@ const Shop = () => {
             <Link href="/cart">
                   <img src={shopbag.src}  alt="h_shop" className="shopbag"/>
             </Link>
-            
-        
                
-            
-            
         </div>
         <div className="search__box">
                 <form onSubmit={(e)=> submitSearch(e)}>

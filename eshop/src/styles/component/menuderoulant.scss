@@ -33,10 +33,10 @@
         font-family: 'Times New Roman', Times, serif;
         font-weight: normal;
         font-size: 20px;
-        color: red;
+        color: #F1B825;
         top: 0;
         &__title{
-            color: red;
+            color: #F1B825;
             text-decoration: none;
             text-align: center;
             &::after{
@@ -59,12 +59,12 @@
             margin-top: 30px;
             width: 100%;
             text-align: left;
-            background-color: red;
+            background-color: #FAFAFA;
             border-radius: 2px;
             overflow: hidden;
             max-height: 0; 
            &__item{ //li
-            color: red;
+            color: black;
            }
            &__link{
                box-sizing: border-box;
@@ -78,5 +78,8 @@
                    color: black;
                }
            } //a
+           button{
+               padding-top: 5px;
+           }
        }
    }
