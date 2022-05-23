@@ -65,7 +65,7 @@ const LoginC = () => {
         
          <div>
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <h1>Login Client</h1>
+               <center><h1>Login Client</h1></center> 
                 <br/>
                 
                 
