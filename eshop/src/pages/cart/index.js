@@ -147,43 +147,46 @@ const logout = ()=>{
       <center><TitleSection title="Mon panier"/></center>
       {cart && renderTotalQty() !=0 ? (
         <>
-          <p>Vous avez {renderTotalQty()} produits dans votre panier</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Titre</th>
-                <th>Prix Unitaire</th>
-                <th>Quantité</th>
-                <th>Prix total</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((cartItem) => (
-                <tr key={cartItem.code}>
-                  <td>{cartItem.productname}</td>
-                  <td>{cartItem.prixU}</td>
-                  <td>
-                    <button className="btn__black" onClick={() => decrementQty(cartItem)}>-</button>
-                    {cartItem.quantity} 
-                    <button className="btn__black" onClick={() => incrementQty(cartItem)}>+</button>
-                    </td>
-                  <td>{(cartItem.prixU * cartItem.quantity).toFixed(2)}</td>
-                  {/* .Filter() */}
-                  <td>
-                    <button className="btn__black" onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
-                  </td>
-                  {cartItem.quantstock == cartItem.quantity? <p style={{color : 'red'}}> Stock épuisé ({cartItem.quantity} /{cartItem.quantstock})</p>:"" }
+          <center>
+            <p>Vous avez {renderTotalQty()} produits dans votre panier</p>
+            <table className="cart">
+              <thead>
+                <tr>
+                  <th>Titre</th>
+                  <th>Prix Unitaire</th>
+                  <th>Quantité</th>
+                  <th>Prix total</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <Button
-            title="Supprimer le panier"
-            classes="btn__black"
-            type="button"
-            function={deleteCart}
-          />
+              </thead>
+              <tbody>
+                {cart.map((cartItem) => (
+                  <tr key={cartItem.code}>
+                    <td>{cartItem.productname}</td>
+                    <td>{cartItem.prixU}</td>
+                    <td>
+                      <button className="btn__black" onClick={() => decrementQty(cartItem)}>-</button>
+                      {cartItem.quantity} 
+                      <button className="btn__black" onClick={() => incrementQty(cartItem)}>+</button>
+                      </td>
+                    <td>{(cartItem.prixU * cartItem.quantity).toFixed(2)}</td>
+                    {/* .Filter() */}
+                    <td>
+                      <button className="btn__black" onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
+                    </td>
+                    {cartItem.quantstock == cartItem.quantity? <p style={{color : 'red'}}> Stock épuisé ({cartItem.quantity} /{cartItem.quantstock})</p>:"" }
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <Button
+              title="Supprimer le panier"
+              classes="btn__black"
+              type="button"
+              function={deleteCart}
+            />
+          </center>
+          
           {renderTotalAmount()}
           {   connect ?
                <>

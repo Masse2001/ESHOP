@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'MaSuperPolice';
+    src: url('Poppins-Regular.ttf');
+}
+
+
+.page__cart{
+    font-family: 'MaSuperPolice';
+    .cart{
+        border: 2px solid #F1B825 ;
+        thead{
+            border: 2px solid black ;
+        }
+        tbody{
+            border: 2px solid black ;
+            margin-top: 5%;
+            th{
+                margin-left: 2%;
+            }
+        }
+    }
+}
