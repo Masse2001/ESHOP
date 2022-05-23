@@ -2,10 +2,11 @@ import shopbag from "../../public/icons/shopbag.png"
 import Article from "../../components/Article";
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import Link from "next/link";
 
 //Faire le mapping des catégories de menus
 //Faire le mapping des  articles
-const Index = () => {
+const Shop = () => {
 
     const [categorylist, setCategoryList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
@@ -70,7 +71,15 @@ const Index = () => {
     <div>
         <div className="head__bar">
             <h3 className="title__bar">In Style</h3>
-            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            
+            <Link href="/cart">
+                  <img src={shopbag.src}  alt="h_shop" className="shopbag"/>
+            </Link>
+            
+        
+               
+            
+            
         </div>
         <div className="search__box">
                 <form onSubmit={(e)=> submitSearch(e)}>
@@ -114,7 +123,7 @@ const Index = () => {
   )
 }
  
-export default Index;
+export default Shop;
 
 /*
 <Link href="/">

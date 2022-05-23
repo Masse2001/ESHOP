@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 
 
-const register = () => {
+const RegisterF = () => {
     const home = useRouter();
     const[success, setSuccess] = useState(false);
     
@@ -220,4 +220,4 @@ const register = () => {
     )
 }
 
-export default register;
+export default RegisterF;

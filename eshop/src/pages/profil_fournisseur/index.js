@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import Input from '../../components/inputs';
 import axios from 'axios';
 import Article from '../../components/Article';
+import EditArticle from '../../components/EditArticle';
 
 
 const index = (props) => {
@@ -159,7 +160,7 @@ function handleCategoryChange(event) {
                   { productlist ? (products &&
                     products.map((article) => 
                     
-                      <Article  article={article}  key={article.id} />
+                      <EditArticle  article={article}  key={article.id} />
                     
                     ) ) : (
 

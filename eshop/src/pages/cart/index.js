@@ -35,7 +35,7 @@ const Index = () => {
              
             })
         .catch(err => console.log((err)))
-        
+         
     }   
     else
     {
@@ -144,7 +144,7 @@ const logout = ()=>{
   return (
     <div className="page__cart">
     
-      {cart ? (
+      {cart && renderTotalQty() !=0 ? (
         <>
           <p>Vous avez {renderTotalQty()} produits dans votre panier</p>
           <table>
@@ -212,7 +212,7 @@ const logout = ()=>{
         </> 
       )}
 
-    
+     
           
     </div>
   );
