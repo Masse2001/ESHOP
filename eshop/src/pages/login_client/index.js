@@ -100,6 +100,13 @@ const LoginC = () => {
                 <center><hr/></center>
                 <br/>
                 <center>
+                    <p>Je n'ai pas encore e compte, je voudrais m'
+                        <Link href="regiter_client">
+                            <a className="nav__link">inscrire</a>
+                    </Link>
+                    </p>
+                </center>  
+                <center>
                    
                 </center>   
             </form>
