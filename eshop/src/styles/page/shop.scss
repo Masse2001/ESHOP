@@ -24,12 +24,14 @@
 
 
 .search__box{
-    margin: 5px;
-    font-family: 'MaSuperPolice';
-    padding: 10px 5px;
-    transition: 0.3s all;
-    width: 100%;
-    border: 2px solid #F1B825;
+    input{
+        margin: 5px;
+        font-family: 'MaSuperPolice';
+        padding: 10px 5px;
+        transition: 0.3s all;
+        border: 2px solid #F1B825;
+    }
+    
 }
 
 .shop__section{
