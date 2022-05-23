@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Input from "../../components/inputs";
 import Button from "../../components/Button";
 import axios from "axios";
+import Link from "next/link";
 
 
 const LoginC = () => {
@@ -100,10 +101,10 @@ const LoginC = () => {
                 <center><hr/></center>
                 <br/>
                 <center>
-                    <p>Je n'ai pas encore e compte, je voudrais m'
-                        <Link href="regiter_client">
-                            <a className="nav__link">inscrire</a>
-                    </Link>
+                    <p>Vous n'avez pas de compte ?
+                        <Link href="register_client">
+                            <a className="nav__link" style={{color : 'black', fontWeight :'bold'}}> Inscrivez-vous </a>
+                        </Link>
                     </p>
                 </center>  
                 <center>
