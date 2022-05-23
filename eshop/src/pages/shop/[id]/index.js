@@ -133,12 +133,12 @@ const Index = () => {
         <div className='home'>
             <div className="text_home">
                 <TitleSection title={inputs && inputs.productname} classname="title__home"/>
-                <p className='msg__home'>{inputs && inputs.productname}</p>
+                <p className='msg__home'>{inputs && inputs.description}</p>
                 {
                        add ?
-                        <p style={{color : 'green'}}>Ajouté dans le panier</p>
+                        <h2 style={{color : 'green'}}>Ajouté dans le panier</h2>
                         :
-                        <><button type="button" className="btn btn__black" function={() => addTocart(inputs)}>ADD TO CART</button>
+                        <><button type="button" className="btn btn__black" onClick={() => addTocart(inputs)}>ADD TO CART</button>
                        </>
                 }
                 
@@ -147,38 +147,6 @@ const Index = () => {
                 <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
             </div>
         </div>
-
-       
-       
-       <div className="shop__section">
-            <div className="shop__article">
-                <div className="container" style={{textAlign:"center",margin: "0 auto",width:"100px"}}>
-                  <div className='art'>
-                        <div className='art__img'>
-                            <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="art__img"/>
-                        </div>
-                        <div className='art__body'>
-                            <p className='art__title'>{inputs && inputs.productname}</p>
-                            <p className='art__price'>{inputs && inputs.prixU} €</p>
-                        </div>
-                      
-                     {
-                       add ?
-                        <p style={{color : 'green'}}>Ajouté dans le panier</p>
-                        :
-                        <><Button
-                        type="button"
-                        classes="btn btn__color-black"
-                        function={() => addTocart(inputs)}
-                        title="ajouter au panier"
-                        /> 
-                       </>
-                     }
-                    </div>
-                </div>
-            </div>
-
-        </div> 
 
     </div>
   )
