@@ -115,7 +115,7 @@ const Index = () => {
   return (
     <div>
         <div className="head__bar">
-            <h3 className="title__bar">In Style</h3>
+            <h3 className="title__bar">{inputs && inputs.productname}</h3>
             <Link href="/cart">
                    <img src={shopbag.src} alt="h_shop" className="shopbag"/>
             </Link>
