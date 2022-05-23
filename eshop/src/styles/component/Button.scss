@@ -14,3 +14,37 @@
     color: black;
     transition: 0.3s all;
 }
+
+.btn__white{
+    border: 1px solid #F1B825;
+    padding: 15px 20px;
+    background-color: none;
+    background: white;
+    text-transform: uppercase;
+    transition: 0.3s all;
+    color: black;
+}
+.btn__white:hover{
+    background: #F1B825;
+    border: 1px solid black;
+    color: black;
+    transition: 0.3s all;
+}
+
+.btn__b__black{
+    border: 1px solid black;
+    padding: 3px 10px;
+    background-color: none;
+    background: black;
+    text-transform: uppercase;
+    transition: 0.3s all;
+    color: white; 
+    border-radius: 15px;
+}
+.btn__b__black:hover{
+    background: white;
+    border: 1px solid black;
+    color: black;
+    transition: 0.3s all;
+}
+
