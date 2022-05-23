@@ -165,7 +165,8 @@ function handleCategoryChange(event) {
                                                 <a className="sous__menu__link" onClick={()=>console.log('ok')}>Email : {user && user.email_fournisseur}</a>
                                         </li>
                                         <li className="sous__menu__item">
-                                            <button className="btn__black" onClick={logout}>Logout</button>
+                                            <center><button className="btn__black" onClick={logout}>Logout</button></center>
+                                            
                                         </li>
                             </ul>
                 </div>
@@ -174,7 +175,7 @@ function handleCategoryChange(event) {
                 </Link>
             </div>
 
-            <center><h1>Mes produits</h1></center>
+            <center> <TitleSection title="Mes produits"/></center>
 
             <div className="shop__article">
                 <div className="container">
