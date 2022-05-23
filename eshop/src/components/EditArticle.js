@@ -59,14 +59,21 @@ const EditArticle = ({article}) => {
                 {isEditing ? (
                     //autofocus : déjà prêt à écrire dedans
                   <>
+                  <label className='art__label'>Nom du produit</label>
                   <input className='art__input' onChange={(e)=>setEditName(e.target.value)}autoFocus defaultValue={editedName ? editedName : article.productname}/>
+                  
+                  <label className='art__label'>Description </label>
                   <textarea className='art__input'
                       onChange={(e)=>setEditDescription(e.target.value)} autoFocus 
                       defaultValue={editedDescription ? editedDescription : article.description}>
 
                   </textarea>
+
+                  <label className='art__label'>Prix </label>
                   <input className='art__input' type={'number'} onChange={(e)=>setEditPrice(e.target.value)}autoFocus defaultValue={editedPrice ? editedPrice : article.prixU}/>
-                  <input className='art__input' onChange={(e)=>setEditQuant(e.target.value)}autoFocus defaultValue={editQuant ? editQuant : article.QuantiteStock}/>
+                 
+                  <label className='art__label'>Quantité </label>
+                  <input className='art__input' type={'number'} onChange={(e)=>setEditQuant(e.target.value)}autoFocus defaultValue={editQuant ? editQuant : article.QuantiteStock}/>
                 </>
                 ): (
                    <>

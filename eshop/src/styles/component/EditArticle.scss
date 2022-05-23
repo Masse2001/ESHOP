@@ -5,9 +5,13 @@
     width: 100%;
     border: 2px solid #F1B825;
     margin-top: 2%;
+    margin-bottom: 3%;
     &:focus {
         transition: 0.3s all;
         outline: none;
         font-family: 'MaSuperPolice';
     }
+}
+.art__label{
+    margin-top :2%;
 }
