@@ -171,9 +171,6 @@ function handleCategoryChange(event) {
                                         </li>
                             </ul>
                 </div>
-                <Link href="/cart">
-                    <img src={shopbag.src}  alt="h_shop" className="shopbag"/>
-                </Link>
             </div>
 
             <center> <TitleSection title="Mes produits"/></center>
