@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 import userService from '../../services/user.service';
+import TitleSection from "../../components/TitleSection";
 
 const Index = () => {
   const [cart, setCart] = useState();
@@ -143,7 +144,7 @@ const logout = ()=>{
 
   return (
     <div className="page__cart">
-    
+      <center><TitleSection title="Mon panier"/></center>
       {cart && renderTotalQty() !=0 ? (
         <>
           <p>Vous avez {renderTotalQty()} produits dans votre panier</p>
@@ -151,9 +152,9 @@ const logout = ()=>{
             <thead>
               <tr>
                 <th>Titre</th>
-                <th>Prix</th>
+                <th>Prix Unitaire</th>
                 <th>Quantité</th>
-                <th>Total</th>
+                <th>Prix total</th>
                 <th></th>
               </tr>
             </thead>
@@ -163,14 +164,14 @@ const logout = ()=>{
                   <td>{cartItem.productname}</td>
                   <td>{cartItem.prixU}</td>
                   <td>
-                    <button onClick={() => decrementQty(cartItem)}>-</button>
+                    <button className="btn__black" onClick={() => decrementQty(cartItem)}>-</button>
                     {cartItem.quantity} 
-                    <button onClick={() => incrementQty(cartItem)}>+</button>
+                    <button className="btn__black" onClick={() => incrementQty(cartItem)}>+</button>
                     </td>
                   <td>{(cartItem.prixU * cartItem.quantity).toFixed(2)}</td>
                   {/* .Filter() */}
                   <td>
-                    <button onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
+                    <button className="btn__black" onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
                   </td>
                   {cartItem.quantstock == cartItem.quantity? <p style={{color : 'red'}}> Stock épuisé ({cartItem.quantity} /{cartItem.quantstock})</p>:"" }
                 </tr>
@@ -179,7 +180,7 @@ const logout = ()=>{
           </table>
           <Button
             title="Supprimer le panier"
-            classes="btn btn__color-white"
+            classes="btn__black"
             type="button"
             function={deleteCart}
           />
@@ -188,7 +189,7 @@ const logout = ()=>{
                <>
                  <Button
                  title="Confirmer commande"
-                 classes="btn btn__color-white"
+                 classes="btn__black"
                  type="button"
                  function={commandeProd}/>
                    <button className="profil_button" onClick={logout}>Logout</button>
@@ -199,7 +200,7 @@ const logout = ()=>{
              :
                 <Button
                 title="Commander !"
-                classes="btn btn__color-white"
+                classes="btn__black"
                 type="button"
                 function={BoolConnect}/> 
            
@@ -208,7 +209,7 @@ const logout = ()=>{
       ) : (
         <>
         <p className="text__center">Votre panier est vide</p>
-        <button className="profil_button" onClick={logout}>Logout</button>
+        <button className="btn__black" onClick={logout}>Logout</button>
         </> 
       )}
 
