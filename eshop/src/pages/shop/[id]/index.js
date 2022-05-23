@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Article from "../../../components/Article";
 import Button from "../../../components/Button";
 import Link from "next/link";
+import TitleSection from "../../../components/TitleSection";
 
 
 //Faire le mapping des catégories de menus
