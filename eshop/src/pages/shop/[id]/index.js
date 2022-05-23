@@ -131,6 +131,8 @@ const Index = () => {
             <div className="text_home">
                 <TitleSection title={inputs && inputs.productname} classname="title__home"/>
                 <p className='msg__home'>{inputs && inputs.description}</p>
+                <p className='msg__home'>{inputs && inputs.prixU} € </p>
+                
                 {
                        add ?
                         <h2 style={{color : 'green'}}>Ajouté dans le panier</h2>
