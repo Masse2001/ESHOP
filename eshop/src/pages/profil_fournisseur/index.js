@@ -140,19 +140,35 @@ function handleCategoryChange(event) {
 
     return (
         <div>
-            <h1>Profil : 
-              <a href='#addProd' style={{float :"right", textDecoration :"none", background : "green",color :"white",marginRight : "2%"}}className="profil_button">Ajouter produit</a>
-              
-            </h1>
-            
 
-            <br/>
-            <h3>Prenom : {user && user.prenom}</h3>
-            <h3>Nom : {user && user.nom}</h3>
-            <h3>Age : {user && user.age}</h3>
-            <h3>Email : {user && user.email_fournisseur}</h3>
-            <button style={{float :"left",border :"none",backgroundColor: "red"}}className="profil_button" onClick={logout}>Logout</button>
-            <br/>
+          <div className="head__bar">
+                <div className="menu__deroulant">
+                    <ul className="menu__deroulant__title">
+                            Bonjour {user && user.prenom} {user && user.nom}
+                    </ul>
+                        <ul className="sous__menu">
+                                        <li className="sous__menu__item">
+                                                <a className="sous__menu__link" onClick={()=>console.log('ok')}>Prenom : {user && user.prenom}</a>
+                                        </li>
+                                        <li className="sous__menu__item">
+                                                <a className="sous__menu__link" onClick={()=>console.log('ok')}>Nom : {user && user.nom}</a>
+                                        </li>
+                                        <li className="sous__menu__item">
+                                                <a className="sous__menu__link" onClick={()=>console.log('ok')}>Age : {user && user.age}</a>
+                                        </li>
+                                        <li className="sous__menu__item">
+                                                <a className="sous__menu__link" onClick={()=>console.log('ok')}>Email : {user && user.email_fournisseur}</a>
+                                        </li>
+                                        <li className="sous__menu__item">
+                                            <button className="btn__black" onClick={logout}>Logout</button>
+                                        </li>
+                            </ul>
+                </div>
+                <Link href="/cart">
+                    <img src={shopbag.src}  alt="h_shop" className="shopbag"/>
+                </Link>
+            </div>
+
             <center><h1>Mes produits</h1></center>
 
             <div className="shop__article">
