@@ -21,31 +21,17 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav__item">
-            <Link href="contact">
+            <Link href="/contact">
               <a className="nav__link">Contact us</a>
             </Link>
           </li>
           <li className="nav__item">
-            <Link href="/login_fournisseur">
-              <a className="nav__link">Login-F</a>
+            <Link  href={"/login_client"}>
+            <button type="button" className="btn__white">
+              S'IDENTIFIER
+            </button>
             </Link>
           </li>
-          <li className="nav__item">
-            <Link href="/register_fournisseur">
-              <a className="nav__link">Register-F</a>
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link href="/login_client">
-              <a className="nav__link">Login-C</a>
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link href="/register_client">
-              <a className="nav__link">Register-C</a>
-            </Link>
-          </li>
-          
           
         </ul>
       </nav>
