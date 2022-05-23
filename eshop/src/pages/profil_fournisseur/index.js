@@ -191,7 +191,7 @@ function handleCategoryChange(event) {
 
             
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <center><h1 id='addProd'>Add  Product</h1></center>
+                <center><TitleSection title="ADD PRODUCT"/></center>
                 <br/>
                 
                 

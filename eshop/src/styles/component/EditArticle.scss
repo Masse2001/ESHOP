@@ -1,0 +1,12 @@
+.art__input{
+    font-family: 'MaSuperPolice';
+    padding: 10px 5px;
+    transition: 0.3s all;
+    width: 100%;
+    border: 2px solid #F1B825;
+    &:focus {
+        transition: 0.3s all;
+        outline: none;
+        font-family: 'MaSuperPolice';
+    }
+}
