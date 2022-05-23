@@ -68,7 +68,7 @@ const LoginF = () => {
         
          <div>
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <h1>Register Fournisseur</h1>
+                <h1>Login Fournisseur</h1>
                 <br/>
                 
                 

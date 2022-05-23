@@ -28,7 +28,15 @@ const Header = () => {
           <li className="nav__item">
             <Link  href={"/login_client"}>
             <button type="button" className="btn__white">
-              S'IDENTIFIER
+                Client
+            </button>
+            </Link>
+          </li>
+
+          <li className="nav__item">
+            <Link  href={"/login_fournisseur"}>
+            <button type="button" className="btn__white">
+                Fournisseur
             </button>
             </Link>
           </li>
