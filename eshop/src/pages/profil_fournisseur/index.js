@@ -10,6 +10,7 @@ import Article from '../../components/Article';
 import EditArticle from '../../components/EditArticle';
 import Link from 'next/link';
 import shopbag from "../../public/icons/shopbag.png"
+import TitleSection from '../../components/TitleSection';
 
 
 
