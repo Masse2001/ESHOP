@@ -113,18 +113,28 @@ const Index = () => {
   return (
     <div>
         <div className="head__bar">
-            <h3 className="title__bar">In Style</h3>
-            <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            <h3 className="title__bar">{inputs && inputs.productname}</h3>
+            <Link href="/cart">
+                <img src={shopbag.src} alt="h_shop" className="shopbag"/>
+            </Link>
         </div>
-        <div className="search__box">
-                <form onSubmit={()=>console.log("C'est fait")}>
-                    <input type="text" name="name" id="name" required placeholder="Search" className="search__input"/>
-                </form>
-                    <h1>Product-Details</h1>
-                    <h2> Catégorie : <span style={{textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
-            
+        <div className='home'>
+            <div className="text_home">
+                <TitleSection title={inputs && inputs.productname} classname="title__home"/>
+                <p className='msg__home'>{inputs && inputs.productname}</p>
+                {localStorage.getItem('jwt_client') ? 
+                 <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>ADD TO CART</button>
+                 :
+                 <Link href="/login_client">
+                  <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>S'IDENTIFIER</button>
+                 </Link>
+                }
+            </div>
+            <div className="img__box__home">
+                <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
+            </div>
         </div>
-       
+        
        <div className="shop__section">
             <div className="shop__article">
                 <div className="container" style={{textAlign:"center",margin: "0 auto",width:"100px"}}>
