@@ -5,6 +5,7 @@ import withAuthC from '../../HOC/withAuthC';
 import { useRouter } from "next/router";
 import Button from '../../components/Button';
 import axios from 'axios';
+import TitleSection from '../../components/TitleSection';
 
 const index = () => {
 
@@ -93,7 +94,7 @@ const index = () => {
                                                 <a className="sous__menu__link" onClick={()=>console.log('ok')}>Adresse: {user && user.adresse}</a>
                                         </li>
                                         <li className="sous__menu__item">
-                                            <button className="btn__black" onClick={logout}>Logout</button>
+                                        <center><button className="btn__black" onClick={logout}>Logout</button></center>
                                         </li>
                             </ul>
                 </div>
@@ -102,9 +103,7 @@ const index = () => {
                 </Link>
             </div>
 
-            <br/>
-            <br/>
-            <center><h1>Produit(s) acheté(s)</h1></center>
+            <center> <TitleSection title="Produit(s) acheté(s)"/></center>
 
               <div className="shop__article">
                 <div className="container">
@@ -125,7 +124,7 @@ const index = () => {
                                           
                     ) ) : (
 
-                      <h3 style={{ color : "red"}}> Pas de produit acheté pour le moment</h3>
+                        <TitleSection title="Pas de pruits pour l'instant"/>
 
                     )}
                 </div>
