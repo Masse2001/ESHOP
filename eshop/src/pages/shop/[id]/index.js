@@ -120,23 +120,6 @@ const Index = () => {
                    <img src={shopbag.src} alt="h_shop" className="shopbag"/>
             </Link>
         </div>
-        
-        <div className='home'>
-            <div className="text_home">
-                <TitleSection title={inputs && inputs.productname} classname="title__home"/>
-                <p className='msg__home'>{inputs && inputs.productname}</p>
-                {localStorage.getItem('jwt_client') ? 
-                 <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>ADD TO CART</button>
-                 :
-                 <Link href="/login_client">
-                  <button type="button" className="btn btn__black" function={() => addTocart(inputs)}>S'IDENTIFIER</button>
-                 </Link>
-                }
-            </div>
-            <div className="img__box__home">
-                <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
-            </div>
-        </div>
 
         <div className="search__box">
                 <form onSubmit={()=>console.log("C'est fait")}>
@@ -146,6 +129,26 @@ const Index = () => {
                     <h2> Catégorie : <span style={{textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
             
         </div>
+
+        <div className='home'>
+            <div className="text_home">
+                <TitleSection title={inputs && inputs.productname} classname="title__home"/>
+                <p className='msg__home'>{inputs && inputs.productname}</p>
+                {
+                       add ?
+                        <p style={{color : 'green'}}>Ajouté dans le panier</p>
+                        :
+                        <><button type="button" className="btn btn__black" function={() => addTocart(inputs)}>ADD TO CART</button>
+                       </>
+                }
+                
+            </div>
+            <div className="img__box__home">
+                <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
+            </div>
+        </div>
+
+       
        
        <div className="shop__section">
             <div className="shop__article">
