@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'TitlePolice';
+    src: url('Inter-Light.ttf');
+}
+
+.form {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 12%;
+    font-family: 'MaSuperPolice';
+    &__group {
+        margin-bottom: 20px;
+        input {
+            font-family: 'MaSuperPolice';
+            padding: 10px 5px;
+            transition: 0.3s all;
+            width: 100%;
+            border: 2px solid #F1B825;
+            &:focus {
+                transition: 0.3s all;
+                outline: none;
+                font-family: 'MaSuperPolice';
+            }
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: black;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+    }
+}
+hr{
+   background-color: red;
+   background: red;
+}
