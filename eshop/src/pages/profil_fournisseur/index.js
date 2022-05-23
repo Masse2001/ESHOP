@@ -8,6 +8,9 @@ import Input from '../../components/inputs';
 import axios from 'axios';
 import Article from '../../components/Article';
 import EditArticle from '../../components/EditArticle';
+import Link from 'next/link';
+import shopbag from "../../public/icons/shopbag.png"
+
 
 
 const index = (props) => {

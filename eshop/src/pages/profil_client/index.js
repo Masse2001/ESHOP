@@ -5,6 +5,8 @@ import withAuthC from '../../HOC/withAuthC';
 import { useRouter } from "next/router";
 import Button from '../../components/Button';
 import axios from 'axios';
+import Link from 'next/link';
+import shopbag from "../../public/icons/shopbag.png"
 
 const index = () => {
 
