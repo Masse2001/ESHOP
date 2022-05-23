@@ -15,7 +15,7 @@ $user = file_get_contents('php://input');
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
     case "GET":
-        $sql = "SELECT * FROM client";
+        $sql = "SELECT * FROM fournisseur where email_fournisseur = 'gueyebachir98@gmail.com'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -134,7 +134,7 @@ const logout = ()=>{
 
   const renderTotalAmount = () => {
     return (
-      <p>Montant total : {cart.reduce((total, inputs) => total + (inputs.quantity * inputs.prixU),0)} €</p>
+      <h3>Confirmer commande  : {cart.reduce((total, inputs) => total + (inputs.quantity * inputs.prixU),0).toFixed(2)} €</h3>
     )
   }
 
@@ -149,13 +149,14 @@ const logout = ()=>{
         <>
           <center>
             <p>Vous avez {renderTotalQty()} produits dans votre panier</p>
-            <table className="cart">
+            <table className="cart"  style={{marginBottom : '10px'}}>
               <thead>
                 <tr>
                   <th>Titre</th>
                   <th>Prix Unitaire</th>
                   <th>Quantité</th>
                   <th>Prix total</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -164,54 +165,61 @@ const logout = ()=>{
                     <td>{cartItem.productname}</td>
                     <td>{cartItem.prixU}</td>
                     <td>
-                      <button className="btn__black" onClick={() => decrementQty(cartItem)}>-</button>
+                      <button className="btn__black" style={{marginRight : '7px'}} onClick={() => decrementQty(cartItem)}>-</button>
                       {cartItem.quantity} 
-                      <button className="btn__black" onClick={() => incrementQty(cartItem)}>+</button>
+                      <button className="btn__black" style={{marginLeft : '7px'}} onClick={() => incrementQty(cartItem)}>+</button>
                       </td>
                     <td>{(cartItem.prixU * cartItem.quantity).toFixed(2)}</td>
                     {/* .Filter() */}
                     <td>
-                      <button className="btn__black" onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
+                      <button  className="btn__black" onClick={()=>deleteProduct(cartItem)}>Supprimer</button>
                     </td>
                     {cartItem.quantstock == cartItem.quantity? <p style={{color : 'red'}}> Stock épuisé ({cartItem.quantity} /{cartItem.quantstock})</p>:"" }
                   </tr>
                 ))}
               </tbody>
             </table>
-            <Button
-              title="Supprimer le panier"
-              classes="btn__black"
-              type="button"
-              function={deleteCart}
-            />
-          </center>
-          
-          {renderTotalAmount()}
+
+       
           {   connect ?
                <>
-                 <Button
-                 title="Confirmer commande"
-                 classes="btn__black"
-                 type="button"
-                 function={commandeProd}/>
-                   <button className="profil_button" onClick={logout}>Logout</button>
-                   <h3> Client : {user && user.prenom} {user && user.nom}</h3>
-              
+                 <center>
+                    <Button
+                    title={renderTotalAmount()}
+                    classes="btn__black"
+                    type="button"
+                    function={commandeProd}/>
+                    <h3> Client : {user && user.prenom} {user && user.nom}</h3>
+                  </center>
                 </>  
             
              :
-                <Button
-                title="Commander !"
-                classes="btn__black"
-                type="button"
-                function={BoolConnect}/> 
-           
+               <center><Button
+                  title="Commander !"
+                  classes="btn__black"
+                  type="button"
+                  function={BoolConnect}/> 
+              </center> 
            }
+           
+          </center>
+          
+         <center style={{marginBottom :'10px'}}>          
+           <Button
+             
+             title="Supprimer le panier"
+             classes="btn__black"
+             type="button"
+             function={deleteCart}
+           />
+
+         </center>
+  
+         
         </>
       ) : (
         <>
-        <p className="text__center">Votre panier est vide</p>
-        <button className="btn__black" onClick={logout}>Logout</button>
+       <center> <p className="text__center">Votre panier est vide</p></center>
         </> 
       )}
 

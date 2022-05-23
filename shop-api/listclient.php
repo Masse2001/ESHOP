@@ -15,7 +15,7 @@ $user = file_get_contents('php://input');
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
     case "GET":
-        $sql = "SELECT * FROM category";
+        $sql = "SELECT * FROM client where email_client = 'gueyebachir98@gmail.com'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

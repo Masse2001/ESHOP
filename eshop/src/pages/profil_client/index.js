@@ -127,7 +127,7 @@ const index = () => {
                                           
                     ) ) : (
 
-                        <TitleSection title="Pas de pruits pour l'instant"/>
+                        <TitleSection title="Pas de produit(s) acheté(s) pour l'instant"/>
 
                     )}
                 </div>

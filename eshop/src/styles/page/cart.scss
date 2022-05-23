@@ -8,25 +8,27 @@
     font-family: 'MaSuperPolice';
     .cart{
         border: 2px solid #F1B825 ;
-        border-collapse: collapse;
+        //border-collapse: collapse;
         thead{
-            border: 2px solid black ;
+           
             th{
                 margin: 5px;
                 padding: 5px;
-                border: 2px solid #F1B825 ;
                 vertical-align: top;
             }
         }
         tbody{
-            border: 2px solid black ;
+           
             margin-top: 5%;
             th{
                 margin: 5px;
                 padding: 5px;
-                border: 2px solid #F1B825 ;
                 vertical-align: top;
             }
         }
     }
 }
+
+table, th, td {
+    border:1px solid #F1B825;
+  }

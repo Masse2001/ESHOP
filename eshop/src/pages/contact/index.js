@@ -41,7 +41,7 @@ const Index = () => {
     }    
 
     return (
-        <div>
+        <div  style={{marginBottom : '160px'}}> 
             <center><TitleSection title="CONTACTEZ NOUS" /></center>
             <div className="contact__box">
             <div className="infos__box">

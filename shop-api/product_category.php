@@ -17,19 +17,25 @@ switch($method) {
     case "GET":
         $sql = "SELECT * FROM produit";
         $path = explode('/', $_SERVER['REQUEST_URI']);//pour edit recup id
-        if(isset($path[3]) && is_numeric($path[3])) {
-            $sql .= " WHERE categoryid = :categoryid";
+        
+        if(isset($path[3]) && is_numeric($path[3])) 
+        {
+            $sql .= " WHERE categoryid = :categoryid and ( QuantiteStock != 0 or QuantiteStock >0) ";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':categoryid', $path[3]);
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } else {
+        } 
+
+        else 
+        {
             $stmt = $conn->prepare($sql);
             $stmt->execute();
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);  
         }//edit
 
         echo json_encode($users);
+        $json = json_encode($users);
         break;
  
          

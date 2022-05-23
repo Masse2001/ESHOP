@@ -9,20 +9,22 @@ header("Access-Control-Allow-Methods: *");
 include 'DbConnect.php';
 $objDb = new DbConnect;
 $conn = $objDb->connect();
+$connection = mysqli_connect('localhost', 'root', '','eshop');
+
 //var_dump($conn); dans le preload
 //print_r(file_get_contents('php://input')) pour le voir dans le preview
 $user = file_get_contents('php://input');
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
     case "GET":
-        $sql = "SELECT * FROM category";
+        $sql = "SELECT * FROM produit";
         $path = explode('/', $_SERVER['REQUEST_URI']);//pour edit recup id
         
-        if(isset($path[3]) && is_numeric($path[3])) 
+        if(isset($path[3]) && is_string($path[3])) 
         {
-            $sql .= " WHERE categoryid = :categoryid ";
+            $sql .= " WHERE email_fournisseur = :email_fournisseur ";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':categoryid', $path[3]);
+            $stmt->bindParam(':email_fournisseur', $path[3]);
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } 
@@ -35,9 +37,9 @@ switch($method) {
         }//edit
 
         echo json_encode($users);
+        $json = json_encode($users);
         break;
- 
-        
+  
 
 }
 
