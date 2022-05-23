@@ -84,13 +84,12 @@ const index = () => {
                         Bonjour {user && user.prenom} {user && user.nom}
                 </ul>
                     <ul className="sous__menu">
-                            <li className="sous__menu__item">
-                                <p className="sous__menu__link">Prenom : {user && user.prenom}</p>
-                                <p className="sous__menu__link">Nom : {user && user.nom}</p>
-                                <p className="sous__menu__link">Age : {user && user.age}</p>
-                                <p className="sous__menu__link">Email : {user && user.email_client}</p>
-                                <p className="sous__menu__link">Adresse : {user && user.adresse}</p>
-                            </li>
+                                    <li className="sous__menu__item">
+                                            <a className="sous__menu__link" >Prenom : {user && user.prenom}</a>
+                                    </li>
+                                    <li className="sous__menu__item">
+                                            <a className="sous__menu__link" >Nom : {user && user.nom}</a>
+                                    </li>
                                 
                         </ul>
             </div>
