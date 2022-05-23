@@ -140,6 +140,8 @@ function handleCategoryChange(event) {
       
       Router.push('/login_fournisseur')
   }
+
+  
   
 
     return (
