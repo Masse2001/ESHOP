@@ -10,12 +10,19 @@
         border: 2px solid #F1B825 ;
         thead{
             border: 2px solid black ;
+            th{
+                margin: 5px;
+                padding: 5px;
+                border: 2px solid black ;
+            }
         }
         tbody{
             border: 2px solid black ;
             margin-top: 5%;
             th{
-                margin-left: 2%;
+                margin: 5px;
+                padding: 5px;
+                border: 2px solid black ;
             }
         }
     }
