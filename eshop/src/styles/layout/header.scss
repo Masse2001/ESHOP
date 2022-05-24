@@ -10,6 +10,16 @@
     padding-left: 10px;
     padding-right: 10px;
     font-family: "MaSuperPolice";
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo{
+    img{
+        width: 50px;
+        height: auto;
+        border-radius: 20%;
+    }
 }
 
 .header__nav{
@@ -39,4 +49,87 @@
 }
 .nav__link:hover {
     color: rgba(241, 184, 37, 1);
+}
+
+
+.menu__deroulant__header{
+    display: none;
+}
+
+@media only screen and (max-width: 600px){
+
+    //menu__deroulant = header__nav
+    //menu__deroulant__title = menu__deroulant__header
+    //sous__menu = nav__list
+    //sous__menu__item = nav__item
+
+
+    .header__logo{
+        display: none;
+    }
+
+
+    .menu__deroulant__header{
+        display: block;
+    }
+    
+    .header__nav{//li
+        z-index: 1;
+            font-family: 'MaSuperPolice';
+            font-weight: normal;
+            font-size: 20px;
+            color: #F1B825;
+            display: block;
+            top: 0;
+            .menu__deroulant__header{
+                color: #F1B825;
+                text-decoration: none;
+                text-align: center;
+                &::after{
+                    content: ">";
+                    font-size: 20px;
+                    margin-left: 7px;
+                    display: inline-block;
+                }
+            }
+            &:hover{
+                .menu__deroulant__header:after{
+                    animation: rotationFleche 0.2s linear forwards;
+                }
+                .nav__list{
+                    animation: apparitionSousMenu 1s forwards;
+                }
+            }
+           .nav__list{ //ul
+                z-index: 1;
+                margin-top: 10px;
+                width: 100%;
+                height: auto;
+                text-align: left;
+                border-radius: 2px;
+                overflow: hidden;
+                max-height: 0; 
+                display: block;
+                padding: 2px;
+                .nav__item{ //li
+                color: black;
+               }
+               .nav__item{
+                   box-sizing: border-box;
+                   text-decoration: none;
+                   color: black;
+                   height: 50px;
+                   width: 100%;
+                   padding: 20px;
+                   align-items: center;
+                   &:hover{
+                       color: black;
+                   }
+               } //a
+               button{
+                   margin-top: 5px;
+               }
+           }
+       }
+    
 }

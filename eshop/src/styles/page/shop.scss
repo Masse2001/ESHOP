@@ -86,18 +86,3 @@
     display: flex;
     justify-content: space-between;
 }
-
-@media only screen and (max-width: 960px){
-    .search__box{
-        input{
-            margin: 5px;
-            font-family: 'MaSuperPolice';
-            padding: 10px 5px;
-            transition: 0.3s all;
-            border: 2px solid #F1B825;
-            width: 100%;
-        }
-        
-    }
-    
-}

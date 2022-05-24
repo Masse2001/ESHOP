@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
+import logo from "../public/images/S&B.png";
+
 const Header = () => {
   return (
     <header className="header__main">
+      <div className="header__logo">
+          <img src={logo.src} alt="netflix" />
+      </div>
       <nav className="header__nav">
+        <ul className="menu__deroulant__header">Menu</ul>
         <ul className="nav__list">
           <li className="nav__item">
             <Link href="/">
