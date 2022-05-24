@@ -65,7 +65,7 @@ const RegisterF = () => {
     }
 
     function succesRegister(){
-        window.confirm("Success register, redirect in login page !")
+        window.confirm("Success register Fournisseur, redirect in login page !")
         home.push('/login_fournisseur')
         
     }
@@ -74,7 +74,7 @@ const RegisterF = () => {
         
          <div>
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <h1>Register</h1>
+                <center><h1>Register</h1></center>
                 <br/>
                 
                 

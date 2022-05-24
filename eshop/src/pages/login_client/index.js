@@ -57,7 +57,7 @@ const LoginC = () => {
     }*/
 
     function succesRegister(){
-        window.confirm("Success register, redirect in login page !")
+        window.confirm("Success login client, redirect in Profil Page !")
         home.push('/profil_client')
         
     }

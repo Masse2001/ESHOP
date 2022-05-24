@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Input from "../../components/inputs";
 import Button from "../../components/Button";
 import axios from "axios";
+import Link from "next/link";
 
 
 const login = () => {
@@ -56,7 +57,7 @@ const login = () => {
     }*/
 
     function succesRegister(){
-        window.confirm("Success register, redirect in login page !")
+        window.confirm("Success Login, allez valider votre panier !")
         home.push('/cart')
         
     }
@@ -65,7 +66,7 @@ const login = () => {
         
          <div>
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <h1>Login Client</h1>
+               <center>  <h1>Login Client</h1></center>
                 <br/>
                 
                 
@@ -100,8 +101,13 @@ const login = () => {
                 <center><hr/></center>
                 <br/>
                 <center>
-                   
-                </center>   
+                    <p>Vous n'avez pas de compte ?
+                        <Link href="register_client">
+                            <a className="nav__link" style={{color : 'black', fontWeight :'bold'}}> Inscrivez-vous </a>
+                        </Link>
+                    </p>
+                </center>  
+               
             </form>
             {success &&  succesRegister()}
         

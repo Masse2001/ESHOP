@@ -17,7 +17,10 @@ const Index = () => {
     const[add, setAdd]= useState(false);
     const [cart, setCart] = useState();
     const router = useRouter();
+    const [productsim, setProductSim] = useState([]);
     const code = router.query.id;
+    console.log('hellooooooooo', router.query.id)
+    console.log('hellooooooooo', code)
       
     useEffect(() => {
                axios.get(`http://localhost:80/shop-api/product.php/${code}`).then(function(response) {
@@ -34,13 +37,21 @@ const Index = () => {
       
 
       
-    }, [add]);
+    }, [code]);
 
     function getCategoryName(id) {
         axios.get(`http://localhost:80/shop-api/category.php/${id}`).then(function(response) {
            setCategoryName(response.data[0].categoryname);
             
         });
+
+
+        axios.get(`http://localhost:80/shop-api/product_similaire.php/${code}`).then(function(response) {
+           setProductSim(response.data);
+           
+       });
+
+
     }
 
     const addTocart = (element) => {
@@ -122,8 +133,7 @@ const Index = () => {
         </div>
 
         <div className="search__box">
-                    <h1>Product-Details</h1>
-                    <h2> Catégorie : <span style={{textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
+                    <h2 style={{fontFamily :  'MaSuperPolice'}}> Catégorie : <span style={{fontFamily :  'MaSuperPolice',textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
             
         </div>
 
@@ -146,6 +156,33 @@ const Index = () => {
                 <img src={inputs && inputs.url_produit} alt={`${inputs && inputs.productname}`} className="img__home"/>
             </div>
         </div>
+
+
+        <div className="row">
+              
+              
+              <h2 className="row__title">
+                    Produits similaires 
+              </h2>
+            
+              <div className="shop__article">
+
+               <div className="container">
+
+                  {productsim && productsim.map((article, key) =>( 
+                        <Article  article={article}  key={article.id} />
+                  
+                    ))}
+
+               </div>
+
+                
+                
+               </div>
+
+               
+            </div>
+
 
     </div>
   )

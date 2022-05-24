@@ -59,7 +59,7 @@ const LoginF = () => {
     }*/
 
     function succesRegister(){
-        window.confirm("Success register, redirect in login page !")
+        window.confirm("Success login Fournisseur, redirect in Profil Page !")
         home.push('/profil_fournisseur')
         
     }
@@ -68,7 +68,7 @@ const LoginF = () => {
         
          <div>
             <form className='form' onSubmit={e => handleSubmit(e)}>
-                <h1>Login Fournisseur</h1>
+                <center><h1>Login Fournisseur</h1></center>
                 <br/>
                 
                 
@@ -103,8 +103,12 @@ const LoginF = () => {
                 <center><hr/></center>
                 <br/>
                 <center>
-                   
-                </center>   
+                    <p>Vous n'avez pas de compte ?
+                        <Link href="register_fournisseur">
+                            <a className="nav__link" style={{color : 'black', fontWeight :'bold'}}> Inscrivez-vous </a>
+                        </Link>
+                    </p>
+                </center>    
             </form>
             {success &&  succesRegister()}
         

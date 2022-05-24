@@ -3,9 +3,7 @@ import React from 'react';
 
 const Article = ({article}) => {
 
-    function CategName(categ){
-        localStorage.setItem("id", categ)
-      }
+  
 
     return (
         <div className='art'>
@@ -18,7 +16,7 @@ const Article = ({article}) => {
         <div className='art__footer'>
              <p className='art__price'>{article.prixU} €</p>
             <Link href={`/shop/${article.code}`} >
-               <button type='button' className='btn__b__black'>
+               <button type='button' className='btn__black'>
                    More
                </button>
               </Link>
