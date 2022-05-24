@@ -46,6 +46,9 @@
 
 
 @media only screen and (max-width: 960px){
+    .home{
+        display: block;
+    }
     .text__home{
      margin: 25px;
     }
@@ -55,7 +58,7 @@
     }
     .img__home{
         margin: 2%;
-        width: 300px;
+        width: 450px;
         height: auto;
     }
     .img__box__home{
