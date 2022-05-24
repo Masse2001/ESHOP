@@ -132,14 +132,14 @@ const Index = () => {
             </Link>
         </div>
 
-        <div className="search__box">
-                    <h2 style={{fontFamily :  'MaSuperPolice'}}> Catégorie : <span style={{fontFamily :  'MaSuperPolice',textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h2>
-            
-        </div>
 
         <div className='home'>
             <div className="text_home">
                 <TitleSection title={inputs && inputs.productname} classname="title__home"/>
+                <div className="search__box">
+                    <h3 style={{fontFamily :  'MaSuperPolice'}}> Catégorie : <span style={{fontFamily :  'MaSuperPolice',textTransform: 'capitalize', color: "gray", fontWeight:"bold"}}>{categoryname}</span></h3>
+            
+               </div>
                 <p className='msg__home'>{inputs && inputs.description}</p>
                 <p className='msg__home'>{inputs && inputs.prixU} € </p>
                 
